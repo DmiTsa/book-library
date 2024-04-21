@@ -1,0 +1,40 @@
+.newBook {
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.newBookForm {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px 20px;
+    gap: 10px;
+}
+
+.newBookForm input {
+    padding: 5px 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.newBookButtons {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.newBookButtons button {
+    background-color: blue;
+    color: aliceblue;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+.newBookButtons button:hover {
+    background-color: rgb(78, 78, 231);
+}
