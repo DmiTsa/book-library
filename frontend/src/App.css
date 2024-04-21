@@ -1,0 +1,142 @@
+/* non adaptive */
+
+body {
+  background-color: rgb(10, 3, 66);
+  margin: 0 auto;
+}
+
+.header {
+  background-color: darkblue;
+  padding: 15px 0;
+  color: bisque;
+  text-align: center;
+}
+
+.appContainer {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  padding: 20px 0;
+}
+
+.leftSide {
+  min-width: 30%;
+  padding: 0 20px;
+}
+
+.rightSide {
+  min-width: 60%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  padding: 0 20px;
+}
+
+h1,
+h2 {
+  margin: 0;
+  text-align: center;
+}
+
+.newBook {
+  background-color: aliceblue;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.newBookForm {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 10px 40px;
+  gap: 10px;
+}
+
+.newBookForm input {
+  padding: 5px 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+
+.newBookButtons {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.newBookButtons button {
+  background-color: blue;
+  color: aliceblue;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: aliceblue;
+  border-radius: 10px;
+  padding: 15px;
+
+}
+
+.filter input {
+  max-width: 120px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.filter button {
+  background-color: blue;
+  color: aliceblue;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+}
+
+.bookList {
+  background-color: aliceblue;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.booklistItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 5px 5px;
+}
+
+.booklistItem:hover {
+  background-color: lightblue;
+}
+
+.icoBtn {
+  background-color: rgb(220, 254, 28);
+  color: aliceblue;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+}
+
+.delBtn {
+  background-color: rgb(235, 226, 226);
+  color: red;
+  padding: 10px 20px;
+  border: 1px solid red;
+  border-radius: 10px;
+}
+
+p {
+  margin: 0
+}
