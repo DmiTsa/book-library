@@ -16,7 +16,7 @@ export default function NewBook() {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (title && author) {
-      const book = { title, author, id: genId() };
+      const book = { title, author, id: genId(), isFavorite: false };
 
       dispatch(addBook(book));
       setAuthor("");
@@ -30,6 +30,7 @@ export default function NewBook() {
       title: booksData[randBook].title,
       author: booksData[randBook].author,
       id: genId(),
+      isFavorite: false,
     };
 
     dispatch(addBook(book));

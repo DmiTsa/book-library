@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { delBook } from "../../redux/books/actions";
+import { delBook, toggleBook } from "../../redux/books/actions";
+import FavoriteFill from "../icons/FavoriteFill";
+import Favorite from "../icons/Favorite";
 import style from "./BookList.module.css";
 
 export default function BookList() {
@@ -10,12 +12,18 @@ export default function BookList() {
     dispatch(delBook(id));
   };
 
+  const favoriteHandler = (id) => {
+    // console.log(toggleBook(id));
+
+    dispatch(toggleBook(id));
+  };
   return (
     <div className={style.bookList}>
       <h2>Book list</h2>
       {books.length !== 0 ? (
         <ul>
           {books.map((book, i) => {
+            console.log(book.isFavorive);
             return (
               <li key={i} style={{ listStyle: "none" }}>
                 <div className={style.booklistItem}>
@@ -26,7 +34,9 @@ export default function BookList() {
                     </p>
                   </div>
                   <div className={style.booklistitemButtons}>
-                    <button className={style.icoBtn}>0</button>
+                    <span onClick={() => favoriteHandler(book.id)}>
+                      {book.isFavorite ? <FavoriteFill /> : <Favorite />}
+                    </span>
                     <button
                       className={style.delBtn}
                       onClick={() => deleteBook(book.id)}

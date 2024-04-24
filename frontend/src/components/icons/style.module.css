@@ -1,0 +1,17 @@
+.icoBtn {
+    display: inline;
+    background-color: rgb(208, 210, 202);
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+.icoBtnFill {
+    display: inline;
+    background-color: rgb(220, 254, 28);
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 10px;
+}
