@@ -9,7 +9,6 @@ function App() {
       <header className="header">
         <h1>Book Library</h1>
       </header>
-
       <div className="appContainer">
         <div className="leftSide">
           <NewBook />
@@ -19,7 +18,6 @@ function App() {
           <BookList />
         </div>
       </div>
-
     </div>
   );
 }

@@ -1,14 +1,20 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addBook } from "../../redux/books/actions";
 import style from "./NewBook.module.css";
 
 export default function NewBook() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const dispatch = useDispatch();
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (title && author) {
-      // dispatchEvent
+      const book = { title, author };
+      // console.log(addBook(book)); //dev
+
+      dispatch(addBook(book));
       setAuthor("");
       setTitle("");
       // console.log(title, author); //dev

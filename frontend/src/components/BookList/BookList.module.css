@@ -32,3 +32,8 @@
     border: 1px solid red;
     border-radius: 10px;
 }
+
+ul {
+    margin: 0;
+    padding: 0;
+}
