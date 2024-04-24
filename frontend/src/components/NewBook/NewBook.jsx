@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addBook } from "../../redux/books/actions";
+import { booksData } from "../../data/booksData.js";
 import style from "./NewBook.module.css";
+
+function genId() {
+  return Math.floor(Math.random() * 1000);
+}
 
 export default function NewBook() {
   const [title, setTitle] = useState("");
@@ -11,14 +16,23 @@ export default function NewBook() {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (title && author) {
-      const book = { title, author };
-      // console.log(addBook(book)); //dev
+      const book = { title, author, id: genId() };
 
       dispatch(addBook(book));
       setAuthor("");
       setTitle("");
-      // console.log(title, author); //dev
     }
+  };
+
+  const addRandomBook = () => {
+    const randBook = Math.floor(Math.random() * booksData.length);
+    const book = {
+      title: booksData[randBook].title,
+      author: booksData[randBook].author,
+      id: genId(),
+    };
+
+    dispatch(addBook(book));
   };
 
   return (
@@ -45,7 +59,9 @@ export default function NewBook() {
         />
         <div className={style.newBookButtons}>
           <button type="submit">Add book</button>
-          <button>Add random</button>
+          <button type="button" onClick={() => addRandomBook()}>
+            Add random
+          </button>
           <button>Add random via API</button>
         </div>
       </form>

@@ -1,9 +1,14 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { delBook } from "../../redux/books/actions";
 import style from "./BookList.module.css";
 
 export default function BookList() {
   const books = useSelector((state) => state.books);
-  console.log(books);
+  const dispatch = useDispatch();
+
+  const deleteBook = (id) => {
+    dispatch(delBook(id));
+  };
 
   return (
     <div className={style.bookList}>
@@ -22,7 +27,12 @@ export default function BookList() {
                   </div>
                   <div className={style.booklistitemButtons}>
                     <button className={style.icoBtn}>0</button>
-                    <button className={style.delBtn}>Delete</button>
+                    <button
+                      className={style.delBtn}
+                      onClick={() => deleteBook(book.id)}
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               </li>
