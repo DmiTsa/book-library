@@ -10,10 +10,16 @@ const filterSlice = createSlice({
     reducers: {
         setTitleFilter: (state, action) => {
             return { ...state, title: action.payload }
+        },
+        resetFilters: (state) => {
+            return initialState
         }
     }
 })
 
-// filterSlice.actions
+export const { setTitleFilter } = filterSlice.actions
+export const { resetFilters } = filterSlice.actions
+
+export const selectTitleFilter = (store) => store.filter.title
 
 export default filterSlice.reducer
