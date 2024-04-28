@@ -1,22 +1,20 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import axios from "axios";
+import createBook from "../../utils/createBook.js";
 import { addBook } from "../../redux/slices/booksSlice.js";
 import { booksData } from "../../data/booksData.js";
 import style from "./NewBook.module.css";
-
-function genId() {
-  return Math.floor(Math.random() * 1000);
-}
 
 export default function NewBook() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const dispatch = useDispatch();
 
-  const onSubmitHandler = (e) => {
+  const addManualBook = (e) => {
     e.preventDefault();
     if (title && author) {
-      const book = { title, author, id: genId(), isFavorite: false };
+      const book = createBook(title, author, "manual");
 
       dispatch(addBook(book));
       setAuthor("");
@@ -26,20 +24,34 @@ export default function NewBook() {
 
   const addRandomBook = () => {
     const randBook = Math.floor(Math.random() * booksData.length);
-    const book = {
-      title: booksData[randBook].title,
-      author: booksData[randBook].author,
-      id: genId(),
-      isFavorite: false,
-    };
+    const book = createBook(
+      booksData[randBook].title,
+      booksData[randBook].author,
+      "random"
+    );
 
     dispatch(addBook(book));
+  };
+
+  const addRandomBookApi = async () => {
+    try {
+      const res = await axios.get("http://localhost:4000/random-book");
+
+      if (res?.data?.title && res?.data?.author) {
+        const { title, author } = res.data;
+        const book = createBook(title, author, "API");
+
+        dispatch(addBook(book));
+      }
+    } catch (error) {
+      console.log(`ERROR ${error}`);
+    }
   };
 
   return (
     <div className={style.newBook}>
       <h2>Add a new book</h2>
-      <form className={style.newBookForm} onSubmit={onSubmitHandler}>
+      <form className={style.newBookForm} onSubmit={addManualBook}>
         <label htmlFor="Title">Title:</label>
         <input
           type="text"
@@ -60,10 +72,12 @@ export default function NewBook() {
         />
         <div className={style.newBookButtons}>
           <button type="submit">Add book</button>
-          <button type="button" onClick={() => addRandomBook()}>
+          <button type="button" onClick={addRandomBook}>
             Add random
           </button>
-          <button>Add random via API</button>
+          <button type="button" onClick={addRandomBookApi}>
+            Add random via API
+          </button>
         </div>
       </form>
     </div>

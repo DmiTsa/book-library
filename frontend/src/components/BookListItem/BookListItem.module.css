@@ -18,3 +18,9 @@
     border: 1px solid red;
     border-radius: 10px;
 }
+
+.favoriteIcon {
+    color: rgb(225, 225, 44);
+    font-size: 25px;
+    margin: 0 10px;
+}
