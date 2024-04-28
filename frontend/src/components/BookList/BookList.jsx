@@ -1,14 +1,28 @@
 import { useSelector } from "react-redux";
-import { selectTitleFilter } from "../../redux/slices/filterSlice";
+import {
+  selectTitleFilter,
+  selectAuthorFilter,
+  selectOnlyFavorite,
+} from "../../redux/slices/filterSlice";
 import BookListItem from "../BookListItem/BookListItem";
 import style from "./BookList.module.css";
 
 export default function BookList() {
   const books = useSelector((state) => state.books);
-  const filterBooks = useSelector(selectTitleFilter);
+  const filterTitleBooks = useSelector(selectTitleFilter);
+  const filterAuthorBooks = useSelector(selectAuthorFilter);
+  const filterIsFavorite = useSelector(selectOnlyFavorite); //условие
 
   const filtredBooks = books.filter((book) => {
-    return book.title.toLowerCase().includes(filterBooks.toLowerCase());
+    const matchedTitle = book.title
+      .toLowerCase()
+      .includes(filterTitleBooks.toLowerCase());
+    const matchedAuthor = book.author
+      .toLowerCase()
+      .includes(filterAuthorBooks.toLowerCase());
+    const matchedFavorite = filterIsFavorite ? book.isFavorite : true;
+
+    return matchedTitle && matchedAuthor && matchedFavorite;
   });
 
   return (
