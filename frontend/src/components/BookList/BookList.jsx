@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { selectorBook } from "../../redux/slices/booksSlice";
 import {
   selectTitleFilter,
   selectAuthorFilter,
@@ -8,7 +9,7 @@ import BookListItem from "../BookListItem/BookListItem";
 import style from "./BookList.module.css";
 
 export default function BookList() {
-  const books = useSelector((state) => state.books);
+  const books = useSelector(selectorBook);
   const filterTitleBooks = useSelector(selectTitleFilter);
   const filterAuthorBooks = useSelector(selectAuthorFilter);
   const filterIsFavorite = useSelector(selectOnlyFavorite); //условие

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { delBook, toggleBook } from "../../redux/books/actions";
+import { delBook, toggleBook } from "../../redux/slices/booksSlice";
 import FavoriteFill from "../icons/FavoriteFill";
 import Favorite from "../icons/Favorite";
 import style from "./BookListItem.module.css";
