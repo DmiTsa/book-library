@@ -13,6 +13,14 @@ app.get('/random-book', (req, res) => {
     res.json(data)
 })
 
+app.get('/random-book-delay', (req, res) => {
+    const randomIndex = Math.floor(Math.random() * booksData.length)
+    const data = booksData[randomIndex]
+    setTimeout(() => {
+        res.json(data)
+    }, 3000)
+})
+
 const PORT = process.env.PORT || 4000
 
 app.listen(PORT, () => {

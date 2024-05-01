@@ -6,9 +6,13 @@ import { setError } from "../../redux/slices/errorSlice.js";
 import { booksData } from "../../data/booksData.js";
 import style from "./NewBook.module.css";
 
+// const URL = "http://localhost:4000/random-book";
+const URL = "http://localhost:4000/random-book-delay";
+
 export default function NewBook() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   const addManualBook = (e) => {
@@ -35,8 +39,13 @@ export default function NewBook() {
     dispatch(addBook(book));
   };
 
-  const addRandomBookApi = () => {
-    dispatch(fetchBook());
+  const addRandomBookApi = async () => {
+    try {
+      setIsLoading(true);
+      await dispatch(fetchBook(URL));
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -66,8 +75,8 @@ export default function NewBook() {
           <button type="button" onClick={addRandomBook}>
             Add random
           </button>
-          <button type="button" onClick={addRandomBookApi}>
-            Add random via API
+          <button type="button" onClick={addRandomBookApi} disabled={isLoading}>
+            {isLoading ? "Loading book..." : "Add random via API"}
           </button>
         </div>
       </form>
