@@ -1,0 +1,11 @@
+.error {
+    position: absolute;
+    color: brown;
+    background-color: lightcoral;
+    min-width: 150px;
+    min-height: 20px;
+}
+
+.hide {
+    display: none;
+}

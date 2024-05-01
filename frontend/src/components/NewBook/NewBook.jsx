@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 import createBook from "../../utils/createBook.js";
-import { addBook } from "../../redux/slices/booksSlice.js";
+import { addBook, fetchBook } from "../../redux/slices/booksSlice.js";
 import { booksData } from "../../data/booksData.js";
 import style from "./NewBook.module.css";
 
@@ -33,19 +32,8 @@ export default function NewBook() {
     dispatch(addBook(book));
   };
 
-  const addRandomBookApi = async () => {
-    try {
-      const res = await axios.get("http://localhost:4000/random-book");
-
-      if (res?.data?.title && res?.data?.author) {
-        const { title, author } = res.data;
-        const book = createBook(title, author, "API");
-
-        dispatch(addBook(book));
-      }
-    } catch (error) {
-      console.log(`ERROR ${error}`);
-    }
+  const addRandomBookApi = () => {
+    dispatch(fetchBook());
   };
 
   return (

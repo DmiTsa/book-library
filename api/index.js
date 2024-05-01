@@ -9,7 +9,6 @@ app.use(cors())
 app.get('/random-book', (req, res) => {
     const randomIndex = Math.floor(Math.random() * booksData.length)
     const data = booksData[randomIndex]
-    console.log(randomIndex);
 
     res.json(data)
 })
