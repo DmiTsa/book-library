@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import createBook from "../../utils/createBook.js";
 import { addBook, fetchBook } from "../../redux/slices/booksSlice.js";
+import { setError } from "../../redux/slices/errorSlice.js";
 import { booksData } from "../../data/booksData.js";
 import style from "./NewBook.module.css";
 
@@ -18,6 +19,8 @@ export default function NewBook() {
       dispatch(addBook(book));
       setAuthor("");
       setTitle("");
+    } else {
+      dispatch(setError("Title and author field must be filled!"));
     }
   };
 
